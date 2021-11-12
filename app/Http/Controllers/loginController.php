@@ -110,6 +110,7 @@ class loginController extends Controller
         $User->password=Hash::make($request->password);
         $save = $User->save();
 
+       
         if(!$save){
             return back()->with('fail','Username and email must be unique');
         }

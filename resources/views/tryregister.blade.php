@@ -44,6 +44,12 @@
 									
 									
                                     <form action="{{route ('auth.save')}}" method="post" id="myform">
+										@if($errors->any())
+										<div style="background-color: rgb(212, 69, 69);color:rgb(255, 255, 255);width:14em; padding:1em;border-radius:1em;">
+											{{ implode('', $errors->all(':message')) }}
+										</div>
+    									
+										@endif
 										@if(Session::get('success'))
 
                                         <div style="background-color: rgb(74, 212, 69);color:rgb(255, 255, 255);width:14em; padding:1em;border-radius:1em;">
@@ -82,7 +88,7 @@
                                         <span>@error('username'){{$message}}@enderror</span>
             
                                         
-                                        <input type="password" name="password" required placeholder="Password" >
+                                        <input type="password" name="password" required placeholder="Password(must exceed 8 characters" >
                                         <span>@error('password'){{$message}}@enderror</span>
                                         
                                         <button type="submit">Create Account</button>
